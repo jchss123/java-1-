@@ -32,3 +32,4 @@ public class Main {
         System.out.println(cNum+"번을 선택하셨습니다");
     }
 }
+//공부
