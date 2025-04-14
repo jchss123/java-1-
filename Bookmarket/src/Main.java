@@ -26,7 +26,6 @@ public static void menuCartClear(){
         System.out.println("7.영수증 표시하기\t\t\t");
     }
     public static boolean menuExit(){
-
         System.out.print("8.종료\n");
         return true;
     }
