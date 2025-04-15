@@ -1,6 +1,6 @@
 package arr;
 
-import java.util.Arrays;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -22,7 +22,7 @@ public class arrEx3 {
 
         int index = 0;
         while (index < myResult.length){
-            // 0~9
+            //
             int randomNumber = rand.nextInt(9) + 1;
             boolean duplicate = false;
             for(int i= 0; i < myResult.length; i++ ){
@@ -31,6 +31,7 @@ public class arrEx3 {
                     break;
                 }
             }
+
             if(!duplicate) {
                 myResult[index] = randomNumber;
             }
@@ -76,7 +77,7 @@ public class arrEx3 {
             }
         }
 
-        System.out.println("총 " + answerCount + "번 만에 정답을 맞췄습니다! 👏");
+        System.out.println("총 " + answerCount + "   번 만에 정답을 맞췄습니다! 👏");
     }
 }
 
