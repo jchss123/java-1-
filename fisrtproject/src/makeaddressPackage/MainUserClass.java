@@ -4,40 +4,46 @@ import java.util.Scanner;
 
 public class MainUserClass {
 
-
-
-    static String[][] user= {
-            //id   pw      이름   지역    번호
-            {"aa", "123", "aa", "경기", "123"},
-            {"bb", "123", "bb", "부산", "123"},
-            {"cc", "123", "cc", "서울", "123"},
-    };
-
-
-
-
+    static UserClass[] users = new UserClass[3];
+    static UserClass currentUser;
 
     //주소록 검색하는 함수
     public static void findAddress(){
         Scanner s=new Scanner(System.in);
        System.out.println("검색할 유저의 이름을 입력하세요");
-         String inputUser= s.nextLine();
-
-         for(int i=0;i< user.length;i++) {
-             if(inputUser.equals(user[i][3])){
-                 System.out.println(user[i][3]+"님의 지역은"+user[i][4]+"번호는"+user[i][5]);
-             }
+         String inputUser = s.nextLine();
+         if(inputUser.equals(users[0].getName())){
+             System.out.println(users[0].getName()+"님의 주소는"+users[0].getName()+"번호는"+users[0].getNumber());
          }
-
-
+        if(inputUser.equals(users[1].getName())){
+            System.out.println(users[1].getName()+"님의 주소는"+users[1].getName()+"번호는"+users[1].getNumber());
+        }
+        if(inputUser.equals(users[2].getName())){
+            System.out.println(users[2].getName()+"님의 주소는"+users[2].getName()+"번호는"+users[2].getNumber());
+        }
     }
     //전체 주소록 검색
     public static void findEverything(){
-
+        System.out.println(users[0].getName()+"님의 주소:"+users[0].getCountry()+users[0].getName()+"님의 번호는"+users[0].getNumber());
+        System.out.println(users[1].getName()+"님의 주소:"+users[1].getCountry()+users[1].getName()+"님의 번호는"+users[1].getNumber());
+        System.out.println(users[2].getName()+"님의 주소:"+users[2].getCountry()+users[2].getName()+"님의 번호는"+users[2].getNumber());
     }
     //내 정보 변경
     public static void changeInformation(){
+        Scanner s=new Scanner(System.in);
 
+        System.out.println(currentUser.getName()+"님에 현제비밀번호는"+currentUser.getPw()+"변경하실비밀번호를 입력하세요");
+        String change=s.nextLine();
+        currentUser.setPw(change);
+        System.out.println(currentUser.getName()+"비밀번호가"+currentUser.getPw()+"로변경되었습니다");
+        System.out.println(currentUser.getName()+"님에 현제 주소는"+currentUser.getCountry()+"변경하실주소를 입력하세요");
+        String change1=s.nextLine();
+        currentUser.setCountry(change1);
+        System.out.println(currentUser.getName()+"주소가"+currentUser.getCountry()+"로변경되었습니다");
+        System.out.println(currentUser.getName()+"님에 현제번호는"+currentUser.getNumber()+"변경하실번호를 입력하세요");
+        String change2=s.nextLine();
+        currentUser.setNumber(change2);
+        System.out.println(currentUser.getName()+"번호가"+currentUser.getNumber()+"로변경되었습니다");
     }
 
 
@@ -65,7 +71,6 @@ public class MainUserClass {
                 break;
             }
         }
-
     }
 
 
@@ -78,18 +83,24 @@ public class MainUserClass {
         String inputPw=ss.nextLine();
 
         for(int i=0;i<3;i++){
-            if(inputId.equals(user[i][0])){
-                if(inputPw.equals(user[i][1])){
+            if(inputId.equals(users[i].getId())){
+                if(inputPw.equals(users[i].getPw())){
+                    currentUser=users[i];
                     mainPage();
                 }
             }
-
         }
     }
 
     //주소록 관리 로그인 종료 하는 화면
     public static void main(String[] args) {
         Scanner s=new Scanner(System.in);
+        UserClass user=new UserClass("aa", "123", "aa", "경기", "123");
+        UserClass user1=new UserClass("bb", "123", "bb", "부산", "123");
+        UserClass user2=new UserClass("cc", "123", "cc", "서울", "123");
+        users[0] = user;
+        users[1] = user1;
+        users[2] = user2;
 
         while (true) {
             System.out.println("<<주소록 관리>>");
@@ -100,20 +111,7 @@ public class MainUserClass {
                 break;
             }else if(num==1){
                 log();
-
             }
-
-
         }
     }
 }
-//주수록 관리
-//로그인
-//종료
-//로그인을 선택했을때 id님 환영합니다
-//주소록검색 /전체 주소록 검색 /내정보 변경/로그아웃
-//주소록 검색을 선택하면 검색할 유저이름/주소 /전화번호
-//전체주소록 검색을 누르면 유저 전체 주소 보여주기
-// 내정보변경 누르면 내정보값만 변경
-//로그아웃누르면 기본페이지
-//종료누르면 프로그램 끝
